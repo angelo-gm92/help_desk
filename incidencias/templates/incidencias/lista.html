@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="hero">
+
+    <div class="row align-items-center">
+
+        <div class="col-md-8">
+
+            <h1 class="display-5 fw-bold text-success">
+                Sistema HelpDesk
+            </h1>
+
+            <p class="lead text-muted">
+                Gestión de incidencias técnicas y asignación de técnicos.
+            </p>
+
+        </div>
+
+        <div class="col-md-4 text-end">
+
+            <a href="{% url 'crear' %}" class="btn btn-main btn-lg">
+                Registrar incidencia
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="mt-4">
+
+    <h3 class="mb-3">
+        Incidencias registradas
+    </h3>
+
+    {% for incidencia in incidencias %}
+
+    <div class="card card-custom mb-3">
+
+        <div class="card-body">
+
+            <h5>{{ incidencia.titulo }}</h5>
+
+            <p class="text-muted">
+                {{ incidencia.descripcion|truncatechars:100 }}
+            </p>
+
+            <span class="badge bg-primary">
+                {{ incidencia.estado }}
+            </span>
+
+            <span class="badge bg-warning text-dark">
+                {{ incidencia.prioridad }}
+            </span>
+
+        </div>
+
+    </div>
+
+    {% empty %}
+
+    <div class="alert alert-info">
+        No existen incidencias registradas.
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}

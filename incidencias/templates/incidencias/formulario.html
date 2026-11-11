@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+
+    <div class="col-lg-8">
+
+        <div class="card card-custom">
+
+            <div class="card-body p-4">
+
+                <h2 class="mb-4">
+                    Nueva Incidencia
+                </h2>
+
+                <form method="post">
+
+                    {% csrf_token %}
+
+                    {{ form.as_p }}
+
+                    <button type="submit" class="btn btn-main">
+                        Guardar incidencia
+                    </button>
+
+                    <a href="{% url 'lista' %}" class="btn btn-secondary">
+                        Volver
+                    </a>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
